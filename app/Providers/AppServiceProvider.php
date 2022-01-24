@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Interfaces\IAuthService;
+use App\Interfaces\IExchangeService;
+use App\Services\AuthService;
+use App\Services\ExchangeService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->app->bind(IAuthService::class, AuthService::class);
+        $this->app->bind(IExchangeService::class, ExchangeService::class);
     }
 }
